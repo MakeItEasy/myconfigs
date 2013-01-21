@@ -16,10 +16,12 @@ export PATH="${PATH}:/usr/local/bin"
 #######################
 # Use prompt to get state of pane.
 mimic_state() {
-   prompt='^\<.*@.*:'
+   # prompt='^\<.*@.*:'
+   prompt='.*@.*:'
    prompt_line=$(grep $(eval echo ${prompt}) ${backup_dir}/${pane_full} | tail -n 1)
    host=$(printf "${prompt_line}" | cut -d@ -f2 | cut -d: -f1)
-   working_dir=$(printf "${prompt_line}" | cut -d: -f2 | cut -d\> -f1)
+   #working_dir=$(printf "${prompt_line}" | cut -d: -f2 | cut -d\> -f1)
+   working_dir=$(printf "${prompt_line}" | cut -d: -f2 | cut -d# -f1)
 
   if [ "${host}" != "$(hostname)" ] && [ "${host}" != "" ] ;then
     tmux send-keys -t ${pane_full} "ssh ${host}
