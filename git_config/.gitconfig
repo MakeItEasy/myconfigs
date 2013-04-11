@@ -1,0 +1,25 @@
+[color]
+	diff = auto
+	status = true
+	branch = auto
+	interactive = auto
+	ui = true
+[user]
+	name = MakeItEasy
+	email = rugang6891@gmail.com
+[core]
+	editor = vim
+	# editor = gvim
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	who = shortlog -s --
+	# lg = log -p
+	# 以树状结构显示提交log
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[push]
+	# windows 系统下用到，否则会有提示
+	# default = simple
