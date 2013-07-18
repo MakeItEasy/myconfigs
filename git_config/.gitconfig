@@ -20,6 +20,12 @@
 	# lg = log -p
 	# 以树状结构显示提交log
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	# That should do exactly what you want: running git ignore some-file will treat the file as unchanged no matter what you do to
+	# it, until you run git unignore some-file.                                                                                        
+	# 添加了gitignore命令和unignore命令，可以临时忽略一些文件，比如一些配置文件，经常因为local的不同需要不同的配置，那么可以一次提交以后，
+	# 然后把本地那个文件忽略，那么修改任何配置，都不会提示了。
+    ignore = update-index --assume-unchanged                                                                                      
+    unignore = update-index --no-assume-unchanged  
 [push]
 	# windows 系统下用到，否则会有提示
 	# default = simple
