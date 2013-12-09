@@ -24,8 +24,12 @@
 	# it, until you run git unignore some-file.                                                                                        
 	# 添加了gitignore命令和unignore命令，可以临时忽略一些文件，比如一些配置文件，经常因为local的不同需要不同的配置，那么可以一次提交以后，
 	# 然后把本地那个文件忽略，那么修改任何配置，都不会提示了。
-    ignore = update-index --assume-unchanged                                                                                      
-    unignore = update-index --no-assume-unchanged  
+        ignore = update-index --assume-unchanged
+        unignore = update-index --no-assume-unchanged
+        # 这个只可以查到当前目录和子目录下的忽略的文件
+        # ignore-list = !git ls-files -v | grep ^[a-z]
+	# 下面这个命令无论是在根目录下或者子目录下，都可以查到所有的被忽略的文件一览
+        ignore-list = !git ls-files -v --full-name `git rev-parse --show-toplevel` | grep "^[a-z]"
 [push]
 	# windows 系统下用到，否则会有提示
 	# default = simple
